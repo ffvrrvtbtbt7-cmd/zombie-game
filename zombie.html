@@ -22,10 +22,11 @@ button.g{background:var(--pn);box-shadow:0 5px 0 #222;font-size:15px;padding:8px
 <canvas id="c"></canvas>
 <button id="pb" class="g">⏸</button>
 <div id="nmo" class="ov" style="display:flex;z-index:20"><h1>ZOMBIE<br>SHOOTER</h1><p>ตั้งชื่อนักล่าซอมบี้ของคุณ</p><input id="nmi" maxlength="12" placeholder="ชื่อของคุณ" autocomplete="off"><button id="nmgo">เข้าสู่เกม</button></div>
-<div id="menu" class="ov"><h1 id="ti"></h1><div id="sub" style="color:#ccc"></div><div id="best" style="color:var(--gd)"></div><div id="olb" style="color:#9cf;font-size:14px;line-height:1.5"></div><button id="go"></button><div id="row"><button id="nb" class="g"></button><button id="sd" class="g"></button><button id="df" class="g"></button><button id="mu" class="g"></button><button id="vb" class="g"></button><button id="mpb" class="g"></button><button id="qb" class="g">📋 ภารกิจ</button><button id="sb" class="g">🛒 ร้านค้า</button><button id="gb" class="g">👑 เมนูพระเจ้า</button></div></div>
+<div id="menu" class="ov"><h1 id="ti"></h1><div id="sub" style="color:#ccc"></div><div id="best" style="color:var(--gd)"></div><div id="olb" style="color:#9cf;font-size:14px;line-height:1.5"></div><button id="go"></button><div id="row"><button id="nb" class="g"></button><button id="sd" class="g"></button><button id="df" class="g"></button><button id="mu" class="g"></button><button id="vb" class="g"></button><button id="stb" class="g">⚙ ตั้งค่า</button><button id="mpb" class="g"></button><button id="qb" class="g">📋 ภารกิจ</button><button id="sb" class="g">🛒 ร้านค้า</button><button id="gb" class="g">👑 เมนูพระเจ้า</button></div></div>
+<div id="stg" class="ov" style="z-index:37"><h2>⚙ ตั้งค่า</h2><div id="stl" style="display:flex;flex-direction:column;gap:8px"></div><button id="stx">ปิด</button></div>
 <div id="qo" class="ov" style="z-index:36"><h2>📋 ภารกิจ</h2><div id="ql" style="display:flex;flex-direction:column;gap:8px"></div><button id="qx">ปิด</button></div>
 <div id="shp" class="ov" style="z-index:35"><h2>🛒 ร้านค้า</h2><div id="sc2"></div><div id="sl2" style="display:flex;flex-direction:column;gap:8px"></div><button id="sx">ปิด</button></div>
-<div id="gm" class="ov" style="z-index:30"><h2>👑 เมนูพระเจ้า</h2><div id="gl" style="display:flex;flex-direction:column;gap:8px"></div><button id="gx">ปิด</button></div>
+<div id="gm" class="ov" style="z-index:38"><h2>👑 เมนูพระเจ้า</h2><div id="gl" style="display:flex;flex-direction:column;gap:8px"></div><button id="gx">ปิด</button></div>
 <div id="pko" class="ov" style="z-index:40"><h2>👑 ใส่รหัสลับ</h2><div id="pkd"></div><div id="pkg"></div></div>
 <script>
 const $=i=>document.getElementById(i),c=$('c'),x=c.getContext('2d');
@@ -62,7 +63,7 @@ function rs(){const r=c.getBoundingClientRect();W=c.width=r.width;H=c.height=r.h
 function init(){en=[];it=[];mk=[];sc=0;hp=3+U.hp;am=[0,1,2,3,4,5,6].map(magOf);wi=0;sci=0;fx=[];inf=0;t=0;fl=0;rl=0;hf=0;sh=0;rc=0;mg=0;mc=0;nm=0;wc=40;nxb=DF[dfi].b;combo=0;cdn=0;lr=''}init();
 function menu(ti,sub,btn){st=ti=='PAUSED'?'pause':'menu';$('ti').innerHTML=ti;$('sub').textContent=sub;$('go').textContent=btn;{const l=lbG();$('best').innerHTML='🏆 อันดับสูงสุด<br>'+(l.length?l.map((r,i)=>(i+1)+'. '+String(r.n).replace(/[<>&]/g,'')+' — '+(+r.s||0)).join('<br>'):'ยังไม่มี')+'<br>💰 '+coins}$('menu').style.display='flex';$('pb').style.display='none';olbLoad()}
 function play(){$('menu').style.display='none';$('pb').style.display='block';st='play'}
-function labels(){$('nb').textContent='👤 '+(PN||'ตั้งชื่อ');$('sd').textContent=mute?'🔇 เสียง: ปิด':'🔊 เสียง: เปิด';$('df').textContent='🎯 ความยาก: '+DF[dfi].n;$('mu').textContent='🎵 เพลง: '+(mo?'เปิด':'ปิด');$('vb').textContent='📳 สั่น: '+(vo?'เปิด':'ปิด');$('mpb').textContent='🗺 แผนที่: '+(mapi<0?'อัตโนมัติ':SCN[mapi][4])}
+function labels(){$('nb').textContent='👤 '+(PN||'ตั้งชื่อ');$('sd').textContent=mute?'🔇 เสียง: ปิด':'🔊 เสียง: เปิด';$('df').textContent='🎯 ความยาก: '+DF[dfi].n;$('mu').textContent='🎵 เพลง: '+(mo?'เปิด':'ปิด');$('vb').textContent='📳 สั่น: '+(vo?'เปิด':'ปิด');$('mpb').textContent='🗺 แผนที่: '+(mapi<0?'อัตโนมัติ':SCN[mapi][4]);$('sk').textContent='🎥 กล้องสั่น: '+(shk?'เปิด':'ปิด')}
 $('go').onclick=()=>{au();if(st=='menu')init();play()};
 $('pb').onclick=()=>{if(st=='play')menu('PAUSED','หยุดเกมชั่วคราว','เล่นต่อ')};
 $('sd').onclick=()=>{mute=mute?0:1;labels()};
@@ -78,7 +79,11 @@ const SI=[{k:'hp',n:'❤️ เลือดเริ่มต้น +1',mx:2,p:l
 function shDraw(){$('sc2').textContent='💰 '+coins+' เหรียญ';const b=$('sl2');b.innerHTML='';SI.forEach(s=>{const l=U[s.k],mxd=l>=s.mx,e=document.createElement('button');e.className='g';e.textContent=s.n+(s.mx>1?' ('+l+'/'+s.mx+')':'')+' — '+(mxd?'ซื้อแล้ว':s.p(l)+' เหรียญ');e.onclick=()=>{if(mxd)return;const p=s.p(l);if(coins<p){tone(100,.3,'sawtooth',.2,50);return}coins-=p;U[s.k]++;LS('zc',coins);LS('zu',JSON.stringify(U));tone(800,.2,'sine',.2,1400);shDraw()};b.appendChild(e)})}
 $('sb').onclick=()=>{shDraw();$('shp').style.display='flex'};
 function qDraw(){$('ql').innerHTML='';QS.forEach(q=>{const d=document.createElement('div');d.style.cssText='background:#2a2a2a;border-radius:10px;padding:8px 14px;min-width:min(86vw,320px)';d.textContent=(Q.d[q.id]?'✅ ':'⬜ ')+q.n+' ('+Math.min(Q[q.id],q.g)+'/'+q.g+') +'+q.r+'💰';$('ql').appendChild(d)})}
-$('mpb').onclick=()=>{mapi=mapi>=6?-1:mapi+1;LS('zmp',mapi);labels()};$('qb').onclick=()=>{qDraw();$('qo').style.display='flex'};$('qx').onclick=()=>{$('qo').style.display='none'};
+$('mpb').onclick=()=>{mapi=mapi>=6?-1:mapi+1;LS('zmp',mapi);labels()};
+let shk=LS('zsk')=='0'?0:1;const skb=document.createElement('button');skb.id='sk';skb.className='g';
+skb.onclick=()=>{shk=shk?0:1;LS('zsk',shk);labels()};
+['sd','mu','vb'].forEach(i=>$('stl').appendChild($(i)));$('stl').appendChild(skb);$('stl').appendChild($('gb'));
+$('stb').onclick=()=>{$('stg').style.display='flex'};$('stx').onclick=()=>{$('stg').style.display='none'};$('qb').onclick=()=>{qDraw();$('qo').style.display='flex'};$('qx').onclick=()=>{$('qo').style.display='none'};
 $('sx').onclick=()=>{$('shp').style.display='none';menu($('ti').innerHTML,$('sub').textContent,$('go').textContent)};
 let pkV='',pkLk=0;
 ['1','2','3','4','5','6','7','8','9','⌫','0','✕'].forEach(k=>{const b=document.createElement('button');b.textContent=k;b.onclick=()=>pkP(k);$('pkg').appendChild(b)});
@@ -145,7 +150,7 @@ else if(k==4){R(-30,-55,60,55,'#c99a74');R(-22,-120,44,70,'#206');R(-10,-230,20,
 if(fl>0){x.fillStyle='#fff7a0';x.beginPath();x.arc(0,my,fs,0,7);x.fill();x.fillStyle='#f90';x.beginPath();x.arc(0,my,fs*.55,0,7);x.fill()}
 x.restore();rc*=.75;if(rc<.3)rc=0}
 function loop(){
-x.save();if(sh>.5){x.translate((Math.random()-.5)*sh,(Math.random()-.5)*sh);sh*=.85}
+x.save();if(sh>.5){if(shk)x.translate((Math.random()-.5)*sh,(Math.random()-.5)*sh);sh*=.85}
 const S=SCN[sI()];const g=x.createLinearGradient(0,0,0,H);g.addColorStop(0,mg?'#2a0000':S[0]);g.addColorStop(1,mg?'#6a0a0a':S[1]);
 x.fillStyle=g;x.fillRect(0,0,W,H);
 x.fillStyle=mg?'#fcc':'#eee';x.beginPath();x.arc(W*.8,H*.12,28,0,7);x.fill();
